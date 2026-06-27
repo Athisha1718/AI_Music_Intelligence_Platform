@@ -1,4 +1,4 @@
-<img width="1508" height="818" alt="image" src="https://github.com/user-attachments/assets/ce609a28-2c10-4c9f-9193-86c151a32f3a" /># AI_Music_Intelligence_Platform
+# AI_Music_Intelligence_Platform
 AI-powered Music Genre Classification using CNN, Flask and Librosa
 
 # 🎵 AI Music Intelligence Platform
