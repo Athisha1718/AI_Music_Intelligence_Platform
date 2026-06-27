@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Analyzing...</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+
+background:#0f172a;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+}
+
+.card{
+
+width:600px;
+
+background:#1e293b;
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 0 30px rgba(0,0,0,.4);
+
+text-align:center;
+
+}
+
+.loader{
+
+width:80px;
+height:80px;
+
+border:8px solid #444;
+
+border-top:8px solid #38bdf8;
+
+border-radius:50%;
+
+margin:auto;
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+h1{
+
+margin-top:25px;
+
+font-size:32px;
+
+}
+
+.step{
+
+font-size:20px;
+
+margin-top:30px;
+
+color:#94a3b8;
+
+}
+
+.progress{
+
+margin-top:35px;
+
+height:12px;
+
+background:#334155;
+
+border-radius:50px;
+
+overflow:hidden;
+
+}
+
+.bar{
+
+height:100%;
+
+width:0;
+
+background:#38bdf8;
+
+animation:fill 8s linear forwards;
+
+}
+
+@keyframes fill{
+
+100%{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h1>🎵 AI is Analyzing Your Music</h1>
+
+<div class="step" id="status">
+
+Uploading Audio...
+
+</div>
+
+<div class="progress">
+
+<div class="bar"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const messages=[
+
+"Uploading Audio...",
+"Generating Waveform...",
+"Generating Mel Spectrogram...",
+"Extracting MFCC Features...",
+"Analyzing Music DNA...",
+"Running CNN Model...",
+"Predicting Genre...",
+"Finding Similar Songs...",
+"Preparing AI Report...",
+"Done ✅"
+
+];
+
+let i=0;
+
+const txt=document.getElementById("status");
+
+setInterval(()=>{
+
+if(i<messages.length){
+
+txt.innerHTML=messages[i];
+
+i++;
+
+}
+
+},800);
+
+</script>
+
+</body>
+
+</html>

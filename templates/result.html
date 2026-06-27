@@ -1,0 +1,445 @@
+```html
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>🎵 AI Music Analysis Result</h1>
+
+    <p class="subtitle">
+        Deep Learning based Music Genre Classification using CNN
+    </p>
+
+    <div class="grid">
+
+        <!-- Prediction -->
+
+        <div class="card">
+
+            <h2>🎼 Prediction</h2>
+
+            <h1 style="font-size:50px;color:#38bdf8;">
+
+                {{ genre }}
+
+            </h1>
+
+            <h3>
+
+                Confidence :
+                {{ confidence }}%
+
+            </h3>
+
+        </div>
+
+        <!-- Audio Player -->
+
+        <div class="card">
+
+            <h2>🎧 Uploaded Audio</h2>
+
+            <audio controls style="width:100%;margin-top:20px;">
+
+                <source
+                src="{{ url_for('uploaded_file', filename=audio_file) }}">
+
+                Your browser does not support audio playback.
+
+            </audio>
+
+            <br><br>
+
+            <h4>
+
+                📁 {{ audio_file }}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<!-- Genre Probability -->
+
+<div class="card">
+
+    <h2>📊 Genre Probability</h2>
+
+    {% for g,p in genre_probs %}
+
+    <div style="margin-top:18px;">
+
+        <p>
+
+            <b>{{ g }}</b>
+
+            <span style="float:right;">
+
+                {{ "%.2f"|format(p*100) }}%
+
+            </span>
+
+        </p>
+
+        <div class="progress">
+
+            <div
+            class="progress-bar"
+            style="width:{{ p*100 }}%;">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<br>
+
+<!-- ========================= -->
+<!-- AUDIO VISUALIZATION -->
+<!-- ========================= -->
+
+<div class="grid">
+
+    <div class="card">
+
+        <h2>📈 Audio Waveform</h2>
+
+        <img
+        src="{{ url_for('static', filename='waveform.png') }}"
+        style="width:100%;border-radius:10px;">
+
+    </div>
+
+    <div class="card">
+
+        <h2>🌈 Mel Spectrogram</h2>
+
+        <img
+        src="{{ url_for('static', filename='spectrogram.png') }}"
+        style="width:100%;border-radius:10px;">
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+    <div class="card">
+
+        <h2>🎼 Chromagram</h2>
+
+        <img
+        src="{{ url_for('static', filename='chromagram.png') }}"
+        style="width:100%;border-radius:10px;">
+
+    </div>
+
+    <div class="card">
+
+        <h2>🧠 MFCC Heatmap</h2>
+
+        <img
+        src="{{ url_for('static', filename='mfcc.png') }}"
+        style="width:100%;border-radius:10px;">
+
+    </div>
+
+</div>
+
+<br>
+
+<!-- ========================= -->
+<!-- MUSIC DNA -->
+<!-- ========================= -->
+
+<div class="card">
+
+<h2>🧬 Music DNA Analysis</h2>
+
+<div class="grid">
+
+<div class="insight">
+
+<h3>🎵 Tempo</h3>
+
+<h2>
+
+{{ music_dna.tempo }}
+
+BPM
+
+</h2>
+
+<p>Estimated Beats Per Minute</p>
+
+</div>
+
+<div class="insight">
+
+<h3>⚡ Energy</h3>
+
+<h2>
+
+{{ music_dna.energy }}
+
+</h2>
+
+<p>Overall Loudness Level</p>
+
+</div>
+
+<div class="insight">
+
+<h3>✨ Brightness</h3>
+
+<h2>
+
+{{ music_dna.brightness }}
+
+</h2>
+
+<p>Spectral Centroid</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+<div class="insight">
+
+<h3>📈 Zero Crossing Rate</h3>
+
+<h2>
+
+{{ music_dna.zcr }}
+
+</h2>
+
+<p>Signal Frequency Changes</p>
+
+</div>
+
+<div class="insight">
+
+<h3>🎚 Spectral Rolloff</h3>
+
+<h2>
+
+{{ music_dna.rolloff }}
+
+</h2>
+
+<p>High Frequency Distribution</p>
+
+</div>
+
+<div class="insight">
+
+<h3>🎧 Bandwidth</h3>
+
+<h2>
+
+{{ music_dna.bandwidth }}
+
+</h2>
+
+<p>Frequency Spread</p>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+<!-- ========================= -->
+<!-- SIMILAR SONGS -->
+<!-- ========================= -->
+
+<div class="card">
+
+    <h2>🎧 Similar Songs Recommendation</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin-top:20px;">
+
+        <tr style="background:#1e293b;color:white;">
+
+            <th style="padding:15px;">#</th>
+
+            <th style="padding:15px;">Song</th>
+
+            <th style="padding:15px;">Genre</th>
+
+            <th style="padding:15px;">Similarity</th>
+
+        </tr>
+
+        {% for song in recommendations %}
+
+        <tr>
+
+            <td style="padding:15px;">{{ loop.index }}</td>
+
+            <td style="padding:15px;">🎵 {{ song.filename }}</td>
+
+            <td style="padding:15px;">{{ song.genre }}</td>
+
+            <td style="padding:15px;color:#38bdf8;font-weight:bold;">
+
+                {{ song.score }}%
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<br>
+
+<!-- ========================= -->
+<!-- AI PLAYLIST -->
+<!-- ========================= -->
+
+<div class="card">
+
+    <h2>🎼 AI Generated Playlist</h2>
+
+    <ol style="padding-left:30px;line-height:2.2;font-size:18px;">
+
+        {% for song in recommendations %}
+
+        <li>
+
+            {{ song.filename }}
+
+            <span style="color:#38bdf8;">
+
+                ({{ song.genre }})
+
+            </span>
+
+        </li>
+
+        {% endfor %}
+
+    </ol>
+
+</div>
+
+<br>
+
+<!-- ========================= -->
+<!-- AI INSIGHTS -->
+<!-- ========================= -->
+
+<div class="card">
+
+<h2>🤖 AI Insights</h2>
+
+<div class="grid">
+
+<div class="insight">
+
+<h3>Prediction</h3>
+
+<h2>{{ genre }}</h2>
+
+</div>
+
+<div class="insight">
+
+<h3>Confidence</h3>
+
+<h2>{{ confidence }}%</h2>
+
+</div>
+
+<div class="insight">
+
+<h3>Model</h3>
+
+<h2>CNN</h2>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+<div class="insight">
+
+<h3>Recommendation</h3>
+
+<h2>Cosine Similarity</h2>
+
+</div>
+
+<div class="insight">
+
+<h3>Dataset</h3>
+
+<h2>GTZAN</h2>
+
+</div>
+
+<div class="insight">
+
+<h3>Status</h3>
+
+<h2 style="color:#22c55e;">
+
+✔ Completed
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<!-- ========================= -->
+<!-- ACTION BUTTONS -->
+<!-- ========================= -->
+
+<div style="text-align:center;margin:40px 0;">
+
+<a href="/predict">
+
+<button class="btn">
+
+🎵 Analyze Another Song
+
+</button>
+
+</a>
+
+</div>
+
+{% endblock %}
+```
+

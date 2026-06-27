@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div class="hero-left">
+
+        <h1>🎵 AI Music Intelligence Platform</h1>
+
+        <p>
+            Upload any music file and let our CNN model identify the genre,
+            analyze the audio, generate Music DNA, and recommend similar songs.
+        </p>
+
+        <br>
+
+        <a href="/predict" class="btn">
+            🚀 Start Music Analysis
+        </a>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=700"
+             alt="Music"
+             style="width:100%;border-radius:20px;">
+
+    </div>
+
+</div>
+
+<br><br>
+
+<div class="features">
+
+    <div class="card">
+
+        <h2>🎼 Genre Classification</h2>
+
+        <p>
+
+            CNN Deep Learning model predicts
+
+            <b>10 music genres</b>
+
+            with high accuracy.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🎧 Recommendation</h2>
+
+        <p>
+
+            Finds similar songs using
+
+            <b>Cosine Similarity</b>
+
+            from the GTZAN dataset.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📊 Audio Analytics</h2>
+
+        <p>
+
+            Waveform,
+
+            Spectrogram,
+
+            Chromagram,
+
+            MFCC,
+
+            Music DNA.
+
+        </p>
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>✨ Features</h2>
+
+<ul style="line-height:2;">
+
+<li>✔ CNN Based Music Genre Prediction</li>
+
+<li>✔ Audio Feature Extraction</li>
+
+<li>✔ Music DNA Analysis</li>
+
+<li>✔ Similar Song Recommendation</li>
+
+<li>✔ Playlist Generation</li>
+
+<li>✔ Beautiful Dashboard</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>🎵 Supported Genres</h2>
+
+<div class="genre-grid">
+
+<span>🎸 Rock</span>
+
+<span>🎤 Pop</span>
+
+<span>🤠 Country</span>
+
+<span>🎷 Jazz</span>
+
+<span>🎹 Classical</span>
+
+<span>🎧 HipHop</span>
+
+<span>🥁 Metal</span>
+
+<span>💃 Disco</span>
+
+<span>🌴 Reggae</span>
+
+<span>🎼 Blues</span>
+
+</div>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<a href="/predict" class="btn">
+
+🎵 Analyze Your Music
+
+</a>
+
+</div>
+
+{% endblock %}

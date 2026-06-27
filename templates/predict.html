@@ -1,0 +1,200 @@
+```html
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>🎵 Music Genre Prediction</h2>
+
+    <p class="subtitle">
+        Upload an audio file (.wav or .mp3) to predict its music genre using our AI CNN model.
+    </p>
+
+    <form
+        id="uploadForm"
+        action="/predict"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="showLoading()"
+    >
+
+        <div class="upload-box">
+
+            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+
+            <h3>Select Audio File</h3>
+
+            <p>Supported Formats: WAV, MP3</p>
+
+            <input
+                type="file"
+                id="audio_file"
+                name="audio_file"
+                accept=".wav,.mp3"
+                required
+            >
+
+        </div>
+
+        <br>
+
+        <button
+            type="submit"
+            class="btn"
+        >
+
+            <i class="fa-solid fa-music"></i>
+
+            Predict Genre
+
+        </button>
+
+    </form>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+    <div class="card">
+
+        <h3>🎼 Supported Genres</h3>
+
+        <div class="genre-grid">
+
+            <span class="genre-tag">Blues</span>
+
+            <span class="genre-tag">Classical</span>
+
+            <span class="genre-tag">Country</span>
+
+            <span class="genre-tag">Disco</span>
+
+            <span class="genre-tag">Hip-Hop</span>
+
+            <span class="genre-tag">Jazz</span>
+
+            <span class="genre-tag">Metal</span>
+
+            <span class="genre-tag">Pop</span>
+
+            <span class="genre-tag">Reggae</span>
+
+            <span class="genre-tag">Rock</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h3>⚙ AI Prediction Pipeline</h3>
+
+    <div class="pipeline">
+
+        <div class="step">📂 Upload Audio</div>
+
+        <div class="step">🎧 Feature Extraction</div>
+
+        <div class="step">🧠 CNN Analysis</div>
+
+        <div class="step">📊 Audio Visualization</div>
+
+        <div class="step">🎵 Recommendation Engine</div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= LOADING SCREEN ================= -->
+
+<div id="loadingScreen">
+
+    <div class="loading-card">
+
+        <div class="loader"></div>
+
+        <h2>🎵 AI Music Intelligence</h2>
+
+        <p id="loadingText">
+
+            Uploading Audio...
+
+        </p>
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function showLoading(){
+
+document.getElementById("loadingScreen").style.display="flex";
+
+const steps=[
+
+"Uploading Audio...",
+
+"Generating Waveform...",
+
+"Generating Mel Spectrogram...",
+
+"Generating Chromagram...",
+
+"Extracting MFCC Features...",
+
+"Analyzing Music DNA...",
+
+"Running CNN Model...",
+
+"Predicting Genre...",
+
+"Finding Similar Songs...",
+
+"Preparing AI Dashboard...",
+
+"Done ✅"
+
+];
+
+let i=0;
+
+const text=document.getElementById("loadingText");
+
+const timer=setInterval(function(){
+
+if(i<steps.length){
+
+text.innerHTML=steps[i];
+
+i++;
+
+}else{
+
+clearInterval(timer);
+
+}
+
+},700);
+
+}
+
+</script>
+
+{% endblock %}
+```
