@@ -206,6 +206,20 @@ GTZAN Genre Collection
 * 1000 Audio Files
 * 30 Seconds Each
 
+  
+## Download Required Files
+
+### Trained CNN Model
+  
+Download models:
+https://drive.google.com/drive/folders/1cXLK2eFUXWiX1hIMoDtSHvJpkL2keqN6
+
+
+### Dataset
+Download:
+https://drive.google.com/drive/folders/19WMn3OZE6kp2XPONrudiukSw4SdY0RTZ?usp=drive_link
+
+
 # ▶️ Installation
 
 Clone the repository
